@@ -64,7 +64,7 @@ class AccountController extends Controller
             'AccountType' => $request->_AccountType,
             'DomainAccount' => $request->_DomainAccount,
             'Email' => $request->_Email,
-            'ValidTo' => $request->_Valid,
+            'ValidTo' => date('Y-m-d H:i:s', strtotime($request->_Valid)),
             'NickName' => $request->_Nickname
         ]);
 

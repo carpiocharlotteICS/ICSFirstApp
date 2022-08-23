@@ -7,16 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
-    protected $primaryKey = 'AccountID';
+    // Table Name
     protected $table = 'cdbAccounts';
+    // Primary Key
+    protected $primaryKey = 'AccountID';    
     public $fillable = [
         'AccountName', 
         'AccountGroup', 
         'AccountType', 
         'DomainAccount', 
         'Email', 
-        'ValidTo', 
-        'NickName'
+        'ValidTo',
+        'NickName' 
         // 'created_at',
         // 'updated_at'
     ];

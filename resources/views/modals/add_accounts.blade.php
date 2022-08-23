@@ -112,7 +112,7 @@
                     <div class="form-group">
                         <label class="col-sm-6">ValidTo</label>
                         <div class="col-sm-12">
-                            <input type="date" class="form-control" id="valid" name="_Valid" placeholder="Valid To">
+                            <input type="datetime-local" class="form-control" id="valid" name="_Valid" placeholder="Valid To">
                         </div>
                     </div>
 
