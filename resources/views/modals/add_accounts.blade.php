@@ -1,5 +1,3 @@
-<!-- select2 --> 
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <meta name="_token" content="{{ csrf_token() }}">
 
 <div class="modal fade" id="account-modal" tabindex="-1" role="dialog">
@@ -112,7 +110,8 @@
                     <div class="form-group">
                         <label class="col-sm-6">ValidTo</label>
                         <div class="col-sm-12">
-                            <input type="datetime-local" class="form-control" id="valid" name="_Valid" placeholder="Valid To">
+                            <input type="datetime-local" class="form-control" id="valid" name="_Valid" 
+                                placeholder="Valid To" value="2030-01-01T00:00"/>
                         </div>
                     </div>
 
@@ -134,6 +133,7 @@
     </div>
 </div>
 
+<!-- admin_lte scripts -->
+@include('partials.scripts')
 
-
-
+<script src="{{ asset('/scripts/modules/system.js')}}"></script>

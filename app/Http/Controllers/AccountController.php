@@ -16,9 +16,6 @@ class AccountController extends Controller
      */
     public function index(Request $request)
     {
-        // $data['accounts'] = Account::all();
-        // return view('system.accounts', $data);
-
         $_accounts = Account::latest()->get();
 
         if ($request->ajax()) {

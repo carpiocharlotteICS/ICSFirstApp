@@ -1,7 +1,6 @@
-console.log("account management scripts loaded!");
-
 /* CSRF Token */
 $(function () {
+    console.log("account management scripts loaded!");
     $.ajaxSetup({
         headers: {
             "X-CSRF-Token": $('meta[name="_token"]').attr("content"),
@@ -9,11 +8,9 @@ $(function () {
     });
 });
 
-/* Datetime picker */
-$("#datetimepicker").datetimepicker();
-
 /* Display Data */
 let accountTable = $(".data-table").DataTable({
+    responsive: true,
     processing: true,
     serverSide: true,
     order: [],
@@ -24,14 +21,14 @@ let accountTable = $(".data-table").DataTable({
     },
     columns: [
         { data: "AccountID" },
-        { data: "AONumber" },
+        { data: "AONumber", visible: false },
         { data: "AccountName" },
         { data: "AccountGroup" },
         { data: "AccountType" },
         { data: "DomainAccount" },
         { data: "Email" },
-        { data: "ValidTo" },
-        { data: "NickName" },
+        { data: "ValidTo", visible: false },
+        { data: "NickName", visible: false },
         { data: "action", name: "action", orderable: false, searchable: false },
     ],
 });
