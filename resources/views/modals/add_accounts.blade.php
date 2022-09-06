@@ -25,7 +25,7 @@
                     <div class="form-group">
                         <label class="col-sm-6">Account Group</label>
                         <div class="col-sm-12">
-                            <select class="form-control account-group" id="account-group" name="_AccountGroup">
+                            <select class="form-control account-group" style="width: 100%" id="account-group" name="_AccountGroup">
                                 <option disabled="" selected="">Select Account Group</option>
                                 <option value="AO">AO</option>
                                 <option value="BU1">BU1</option>

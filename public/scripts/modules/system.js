@@ -88,3 +88,10 @@ $("#saveBtn").click(function (e) {
         },
     });
 });
+
+/* Select2 */ 
+$("#account-group").select2({
+    placeholder: 'Select Account Group',
+    dropdownParent: $("#account-modal"),
+    tags: true,
+});
