@@ -53,7 +53,7 @@ $("body").on("click", ".editAccount", function () {
             $("#account-modal").modal("show");
             $("#AccountID").val(AccountID);
             $("#AccountName").val(data.AccountName);
-            $("#account-group").val(data.AccountGroup);
+            $("#account-group").html('<option value = "'+data.AccountGroup+'" selected>'+data.AccountGroup+'</option>');
             $("#account-type").val(data.AccountType);
             $("#domain-account").val(data.DomainAccount);
             $("#email").val(data.Email);
@@ -103,7 +103,7 @@ $( "#account-group" ).select2({
       delay: 250,
       data: function (params) {
         return {
-           search: params.AccountGroup // search term
+           search: params.AccountGroup 
         };
       },
       processResults: function (response) {
