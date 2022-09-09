@@ -89,9 +89,30 @@ $("#saveBtn").click(function (e) {
     });
 });
 
-/* Select2 */ 
-$("#account-group").select2({
-    placeholder: 'Select Account Group',
-    dropdownParent: $("#account-modal"),
+/* Select2 */
+$( "#account-group" ).select2({
+    dropdownParent: $('#account-modal'),
     tags: true,
-});
+    ajax: { 
+      url: "/getGroup",
+      headers: {
+        "X-CSRF-Token": $('meta[name="_token"]').attr("content"),
+      },
+      type: "POST",
+      dataType: 'json',
+      delay: 250,
+      data: function (params) {
+        return {
+           search: params.AccountGroup // search term
+        };
+      },
+      processResults: function (response) {
+        return {
+          results: response
+        };
+      },
+      cache: true
+    }
+
+ });
+

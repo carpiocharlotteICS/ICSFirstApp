@@ -25,9 +25,10 @@
                     <div class="form-group">
                         <label class="col-sm-6">Account Group</label>
                         <div class="col-sm-12">
-                            <select class="form-control account-group" style="width: 100%" id="account-group" name="_AccountGroup">
-                                <option disabled="" selected="">Select Account Group</option>
-                                <option value="AO">AO</option>
+                            <select class="form-control account-group" style="width: 100%" id="account-group" name="AccountGroup">
+                                <option value="0"> --Select Account Group-- </option>
+                                {{-- <option disabled="" selected="">Select Account Group</option> --}}
+                                {{-- <option value="AO">AO</option>
                                 <option value="BU1">BU1</option>
                                 <option value="BU2">BU2</option>
                                 <option value="BU5">BU5</option>
@@ -68,7 +69,7 @@
                                 <option value="PMD">PMD</option>
                                 <option value="SALES">SALES</option>
                                 <option value="TCD">TCD</option>
-                                <option value="WAREHOUSE">WAREHOUSE</option>
+                                <option value="WAREHOUSE">WAREHOUSE</option> --}}
                             </select>
                         </div>
                     </div>

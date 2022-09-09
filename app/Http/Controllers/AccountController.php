@@ -57,7 +57,7 @@ class AccountController extends Controller
         $accounts = Account::updateOrCreate(['AccountID' => $request->AccountID], 
         [
             'AccountName' => $request->_AccountName,
-            'AccountGroup' => $request->_AccountGroup,
+            'AccountGroup' => $request->AccountGroup,
             'AccountType' => $request->_AccountType,
             'DomainAccount' => $request->_DomainAccount,
             'Email' => $request->_Email,

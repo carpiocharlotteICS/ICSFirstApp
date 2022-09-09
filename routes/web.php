@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SelectController;
-use App\Http\Controllers\Select2AutocompleteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +27,5 @@ Route::get('/index3', function () {
 Route::get("/accounts", [AccountController::class, 'index']);
 Route::post("/ajax_accounts", [AccountController::class, 'store']);
 Route::get('/accounts/{id}/edit', [AccountController::class, 'edit']);
+Route::post("/getGroup", [SelectController::class, 'getGroup'])->name('getGroup');
+    
