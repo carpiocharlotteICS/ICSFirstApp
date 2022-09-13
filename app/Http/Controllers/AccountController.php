@@ -36,6 +36,10 @@ class AccountController extends Controller
         return view('system.accounts', compact('_accounts'));
     }
 
+    public function addAccGroup(){
+        return view("system.addAccGroup");
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,7 +62,7 @@ class AccountController extends Controller
         [
             'AccountName' => $request->_AccountName,
             'AccountGroup' => $request->AccountGroup,
-            'AccountType' => $request->_AccountType,
+            'AccountType' => $request->AccountType,
             'DomainAccount' => $request->_DomainAccount,
             'Email' => $request->_Email,
             'ValidTo' => date('Y-m-d H:i:s', strtotime($request->_Valid)),

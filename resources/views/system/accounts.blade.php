@@ -19,8 +19,14 @@
         </div>
     </div>
 </div>
+<div class="col-sm-12">
+    <ol class="float-sm-right">
+        <a href="/addAccGroup" class="btn btn-primary mb-3" id="#">Add Account Group</a>
+        <a href="javascript:void(0)" class="btn btn-primary mb-3" id="#">Add Account Type</a>
+    </ol> 
+</div>   
 <div class="card-body">
-    <table class="table table-bordered table-hover dt-responsive display nowrap data-table">
+    <table class="table table-bordered table-hover dt-responsive display nowrap data-table" width="100%">
         <thead>
             <tr>
                 <th>AccountID</th>

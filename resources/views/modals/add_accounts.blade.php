@@ -77,8 +77,9 @@
                     <div class="form-group">
                         <label class="col-sm-6">Account Type</label>
                         <div class="col-sm-12">
-                            <select class="form-control" id="account-type" name="_AccountType">
-                                <option disabled="" selected="">Select Account Type</option>
+                            <select class="form-control account-type" style="width: 100% height: 50px;" id="account-type" name="AccountType">
+                                <option value="0">Select Account Type</option>
+                                {{-- <option disabled="" selected="">Select Account Type</option>
                                 <option value="AO">AO</option>
                                 <option value="GROUP">GROUP</option>
                                 <option value="GUEST">GUEST</option>
@@ -87,7 +88,7 @@
                                 <option value="PM">PM</option>
                                 <option value="SUPPORT">SUPPORT</option>
                                 <option value="TEST">TEST</option>
-                                <option value="USER">USER</option>
+                                <option value="USER">USER</option> --}}
                             </select>
                         </div>
                     </div>

@@ -53,8 +53,20 @@ $("body").on("click", ".editAccount", function () {
             $("#account-modal").modal("show");
             $("#AccountID").val(AccountID);
             $("#AccountName").val(data.AccountName);
-            $("#account-group").html('<option value = "'+data.AccountGroup+'" selected>'+data.AccountGroup+'</option>');
-            $("#account-type").val(data.AccountType);
+            $("#account-group").html(
+                '<option value = "' +
+                    data.AccountGroup +
+                    '" selected>' +
+                    data.AccountGroup +
+                    "</option>"
+            );
+            $("#account-type").html(
+                '<option value = "' +
+                    data.AccountType +
+                    '" selected>' +
+                    data.AccountType +
+                    "</option>"
+            );
             $("#domain-account").val(data.DomainAccount);
             $("#email").val(data.Email);
             $("#valid").val(data.ValidTo);
@@ -89,30 +101,59 @@ $("#saveBtn").click(function (e) {
     });
 });
 
-/* Select2 */
-$( "#account-group" ).select2({
-    dropdownParent: $('#account-modal'),
+/* Select2 - Account Group */
+$("#account-group").select2({
+    dropdownParent: $("#account-modal"),
     tags: true,
-    ajax: { 
-      url: "/getGroup",
-      headers: {
-        "X-CSRF-Token": $('meta[name="_token"]').attr("content"),
-      },
-      type: "POST",
-      dataType: 'json',
-      delay: 250,
-      data: function (params) {
-        return {
-           search: params.AccountGroup 
-        };
-      },
-      processResults: function (response) {
-        return {
-          results: response
-        };
-      },
-      cache: true
-    }
+    ajax: {
+        url: "/getGroup",
+        headers: {
+            "X-CSRF-Token": $('meta[name="_token"]').attr("content"),
+        },
+        type: "POST",
+        dataType: "json",
+        delay: 250,
+        data: function (params) {
+            return {
+                search: params.AccountGroup,
+            };
+        },
+        processResults: function (response) {
+            return {
+                results: response,
+            };
+        },
+        cache: true,
+    },
+});
 
- });
+/* Select2 - Account Type */
+$("#account-type").select2({
+    dropdownParent: $("#account-modal"),
+    tags: true,
+    ajax: {
+        url: "/getType",
+        headers: {
+            "X-CSRF-Token": $('meta[name="_token"]').attr("content"),
+        },
+        type: "POST",
+        dataType: "json",
+        delay: 250,
+        data: function (params) {
+            return {
+                search: params.AccountType,
+            };
+        },
+        processResults: function (response) {
+            return {
+                results: response,
+            };
+        },
+        cache: true,
+    },
+});
 
+
+$("#saveAcctGrp").click(function (e) {
+    alert("New Account Group Saved!");
+});
