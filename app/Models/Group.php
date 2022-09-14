@@ -11,7 +11,6 @@ class Group extends Model
     protected $table = 'accountGroup';
        
     public $fillable = [
-        'id',
         'AccountGroup', 
         // 'created_at',
     ];

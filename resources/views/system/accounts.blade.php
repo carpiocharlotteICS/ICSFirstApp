@@ -21,8 +21,8 @@
 </div>
 <div class="col-sm-12">
     <ol class="float-sm-right">
-        <a href="/addAccGroup" class="btn btn-primary mb-3" id="#">Add Account Group</a>
-        <a href="javascript:void(0)" class="btn btn-primary mb-3" id="#">Add Account Type</a>
+        <a href="/addAccGroup" class="btn btn-primary mb-3">Add Account Group</a>
+        <a href="/addAccType" class="btn btn-primary mb-3">Add Account Type</a>
     </ol> 
 </div>   
 <div class="card-body">
@@ -46,7 +46,7 @@
     </table>
 </div>
 
+{{-- Add Account Modal --}}
 @include('modals.add_accounts')
 
-{{-- Add Account Modal --}}
 @endsection

@@ -153,7 +153,71 @@ $("#account-type").select2({
     },
 });
 
-
+/* Save New Account Group */
 $("#saveAcctGrp").click(function (e) {
-    alert("New Account Group Saved!");
-});
+    e.preventDefault();
+    let id = $('#id').val();
+    let newAccGrp = $('#newAccGrp').val();
+
+    $.ajax({
+        url: "/storeNewGroup",
+        type: "POST",
+        headers: {
+            "X-CSRF-Token": $('meta[name="_token"]').attr("content"),
+        },
+        data: {
+            newAccGrp: newAccGrp,
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.log("New Account Group Saved!")
+            console.log(newAccGrp);
+            swal({
+                title: "New Account Group Saved!",
+                text: "Redirecting to CDB Accounts page...",
+                type: "success",
+                timer: 2000,
+                showConfirmButton: false
+              }, function(){
+                    window.location.href = "/accounts";
+              });
+        },
+        error: function (data) {
+            console.log('Error......');
+        }
+    })
+})
+
+/* Save New Account Type */
+$("#saveAcctType").click(function (e) {
+    e.preventDefault();
+    let newAccType = $('#newAccType').val();
+
+    $.ajax({
+        url: "/storeNewType",
+        type: "POST",
+        headers: {
+            "X-CSRF-Token": $('meta[name="_token"]').attr("content"),
+        },
+        data: {
+            newAccType: newAccType,
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.log("New Account Type Saved!")
+            console.log(newAccType);
+            swal({
+                title: "New Account Type Saved!",
+                text: "Redirecting to CDB Accounts page...",
+                type: "success",
+                timer: 2000,
+                showConfirmButton: false
+              }, function(){
+                    window.location.href = "/accounts";
+              });
+        },
+        error: function (data) {
+            console.log('Error......');
+        }
+    })
+})

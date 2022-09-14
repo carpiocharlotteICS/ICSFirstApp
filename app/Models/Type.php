@@ -11,7 +11,7 @@ class Type extends Model
     protected $table = 'accountType';
        
     public $fillable = [
-        'id',
+        // 'id',
         'AccountType', 
     ];
 }

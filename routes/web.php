@@ -27,6 +27,12 @@ Route::get('/index3', function () {
 Route::get("/accounts", [AccountController::class, 'index']);
 Route::post("/ajax_accounts", [AccountController::class, 'store']);
 Route::get('/accounts/{id}/edit', [AccountController::class, 'edit']);
+// Add New Account Group
 Route::get("/addAccGroup", [AccountController::class, 'addAccGroup']);
+Route::post('/storeNewGroup', [AccountController::class, 'storeNewGroup']);
+// Add New Account Type
+Route::post('/storeNewType', [AccountController::class, 'storeNewType']);
+Route::get("/addAccType", [AccountController::class, 'addAccType']);
+// Select2 Dropdown 
 Route::post("/getGroup", [SelectController::class, 'getGroup'])->name('getGroup');
 Route::post("/getType", [SelectController::class, 'getType'])->name('getType');

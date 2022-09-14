@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Group;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Response;
@@ -36,8 +38,38 @@ class AccountController extends Controller
         return view('system.accounts', compact('_accounts'));
     }
 
-    public function addAccGroup(){
+    public function addAccGroup()
+    {
         return view("system.addAccGroup");
+
+    }
+
+    public function addAccType()
+    {
+        return view("system.addAccType");
+
+    }
+
+    public function storeNewGroup(Request $request){
+        $groups = Group::updateOrCreate(
+            ['id' => $request->id],
+            [
+                'AccountGroup' => $request->newAccGrp,
+            ]
+        );
+
+        return response()->json([$groups, 'success' => 'New Account saved successfully.']);
+    }
+
+    public function storeNewType(Request $request){
+        $types = Type::updateOrCreate(
+            ['id' => $request->id],
+            [
+                'AccountType' => $request->newAccType,
+            ]
+        );
+
+        return response()->json([$types, 'success' => 'New Account saved successfully.']);
     }
 
     /**
@@ -58,16 +90,18 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        $accounts = Account::updateOrCreate(['AccountID' => $request->AccountID], 
-        [
-            'AccountName' => $request->_AccountName,
-            'AccountGroup' => $request->AccountGroup,
-            'AccountType' => $request->AccountType,
-            'DomainAccount' => $request->_DomainAccount,
-            'Email' => $request->_Email,
-            'ValidTo' => date('Y-m-d H:i:s', strtotime($request->_Valid)),
-            'NickName' => $request->_Nickname
-        ]);
+        $accounts = Account::updateOrCreate(
+            ['AccountID' => $request->AccountID],
+            [
+                'AccountName' => $request->_AccountName,
+                'AccountGroup' => $request->AccountGroup,
+                'AccountType' => $request->AccountType,
+                'DomainAccount' => $request->_DomainAccount,
+                'Email' => $request->_Email,
+                'ValidTo' => date('Y-m-d H:i:s', strtotime($request->_Valid)),
+                'NickName' => $request->_Nickname
+            ]
+        );
 
         return response()->json([$accounts, 'success' => 'Account saved successfully.']);
     }
