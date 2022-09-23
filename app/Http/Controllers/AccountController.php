@@ -103,34 +103,28 @@ class AccountController extends Controller
                 'NickName' => $request->_Nickname,
             ]
         );
-            $mail_data = [
-                'recipient'=>'ccarpio@ics.com.ph',
-                'fromEmail'=>$request->_Email,
-                'fromName'=>$request->_AccountName,
-                'subject'=>$request->_AccountName,
-                'body'=>$request->_AccountName,
-            ];
 
-            \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
-                $message->to($mail_data['recipient'])
-                        ->from($mail_data['fromEmail'],$mail_data['fromName'])
-                        ->subject($mail_data['subject']);
-            });
+        $data = array(
+            'recipient'=>'ccarpio@ics.com.ph',
+            'AccountName' => $request->_AccountName,
+            'AccountGroup' => $request->AccountGroup,
+            'AccountType' => $request->AccountType,
+            'DomainAccount' => $request->_DomainAccount,
+            'Email' => $request->_Email,
+            'NickName' => $request->_Nickname,
+        );
 
-            return response()->json([$accounts, 'success' => 'Account saved successfully']);
+
+        \Mail::send('email-template',$data, function($message) use ($data){
+            $message->to($data['recipient'])
+                    ->from($data['Email'],$data['AccountName'])
+                    ->subject($data['AccountName']);
+        });
+
+        return response()->json([$accounts, 'success' => 'Account saved successfully']);
        
     }
-
-    // public function isOnline($site = "https://youtube.com/"){
-    //     if(@fopen($site, "r")){
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
-    // }
-
    
-
     /**
      * Display the specified resource.
      *
