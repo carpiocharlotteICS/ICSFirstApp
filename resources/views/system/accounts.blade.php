@@ -21,8 +21,8 @@
 </div>
 <div class="col-sm-12">
     <ol class="float-sm-right">
-        <a href="/addAccGroup" class="btn btn-primary mb-3">Add Account Group</a>
-        <a href="/addAccType" class="btn btn-primary mb-3">Add Account Type</a>
+        <a href="/addAccGroup" class="btn btn-info mb-3">Add Account Group</a>
+        <a href="/addAccType" class="btn btn-info mb-3">Add Account Type</a>
     </ol> 
 </div>   
 <div class="card-body">

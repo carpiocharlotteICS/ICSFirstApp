@@ -25,7 +25,7 @@ Route::get('/index3', function () {
 });
 
 Route::get("/accounts", [AccountController::class, 'index']);
-Route::post("/ajax_accounts", [AccountController::class, 'store']);
+Route::post("/ajax_accounts", [AccountController::class, 'store'])->name('accounts');
 Route::get('/accounts/{id}/edit', [AccountController::class, 'edit']);
 // Add New Account Group
 Route::get("/addAccGroup", [AccountController::class, 'addAccGroup']);

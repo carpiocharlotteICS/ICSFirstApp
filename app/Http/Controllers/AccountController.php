@@ -90,6 +90,7 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
+
         $accounts = Account::updateOrCreate(
             ['AccountID' => $request->AccountID],
             [
@@ -99,12 +100,36 @@ class AccountController extends Controller
                 'DomainAccount' => $request->_DomainAccount,
                 'Email' => $request->_Email,
                 'ValidTo' => date('Y-m-d H:i:s', strtotime($request->_Valid)),
-                'NickName' => $request->_Nickname
+                'NickName' => $request->_Nickname,
             ]
         );
+            $mail_data = [
+                'recipient'=>'ccarpio@ics.com.ph',
+                'fromEmail'=>$request->_Email,
+                'fromName'=>$request->_AccountName,
+                'subject'=>$request->_AccountName,
+                'body'=>$request->_AccountName,
+            ];
 
-        return response()->json([$accounts, 'success' => 'Account saved successfully.']);
+            \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
+                $message->to($mail_data['recipient'])
+                        ->from($mail_data['fromEmail'],$mail_data['fromName'])
+                        ->subject($mail_data['subject']);
+            });
+
+            return response()->json([$accounts, 'success' => 'Account saved successfully']);
+       
     }
+
+    // public function isOnline($site = "https://youtube.com/"){
+    //     if(@fopen($site, "r")){
+    //         return true;
+    //     }else{
+    //         return false;
+    //     }
+    // }
+
+   
 
     /**
      * Display the specified resource.
@@ -153,4 +178,6 @@ class AccountController extends Controller
     {
         //
     }
+
 }
+

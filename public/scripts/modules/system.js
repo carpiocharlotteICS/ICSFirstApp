@@ -156,7 +156,6 @@ $("#account-type").select2({
 /* Save New Account Group */
 $("#saveAcctGrp").click(function (e) {
     e.preventDefault();
-    let id = $('#id').val();
     let newAccGrp = $('#newAccGrp').val();
 
     $.ajax({
@@ -220,4 +219,4 @@ $("#saveAcctType").click(function (e) {
             console.log('Error......');
         }
     })
-})
+});
