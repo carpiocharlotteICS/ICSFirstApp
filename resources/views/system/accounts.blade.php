@@ -18,13 +18,7 @@
             </div>
         </div>
     </div>
-</div>
-<div class="col-sm-12">
-    <ol class="float-sm-right">
-        <a href="/addAccGroup" class="btn btn-info mb-3">Add Account Group</a>
-        <a href="/addAccType" class="btn btn-info mb-3">Add Account Type</a>
-    </ol> 
-</div>   
+</div>  
 <div class="card-body">
     <table class="table table-bordered table-hover dt-responsive display nowrap data-table" width="100%">
         <thead>

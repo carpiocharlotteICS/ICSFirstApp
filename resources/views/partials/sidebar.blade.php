@@ -38,18 +38,23 @@
              with font-awesome or any other icon font library -->
         <li class="nav-item menu-open">
           <a href="#" class="nav-link active">
-
-            <p>
-              System Maintenance
+            <i class="fa-sharp fa-solid fa-circle-user"></i>
+            <p>System Maintenance
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-            <a href="./addAccGroup" class="nav-link active">
+            <a href="./addAccGroup" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-            <p>Account Management</p>
+            <p>Add Account Group</p>
             </a>
+            </li>
+            <li class="nav-item">
+              <a href="./addAccType" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Add Account Type</p>
+              </a>
             </li>
           </ul>
     </nav>

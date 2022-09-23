@@ -118,7 +118,7 @@ class AccountController extends Controller
         \Mail::send('email-template',$data, function($message) use ($data){
             $message->to($data['recipient'])
                     ->from($data['Email'],$data['AccountName'])
-                    ->subject($data['AccountName']);
+                    ->subject("New CDB Account Created - " . $data['AccountName']);
         });
 
         return response()->json([$accounts, 'success' => 'Account saved successfully']);

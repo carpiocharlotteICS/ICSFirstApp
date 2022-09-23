@@ -15,7 +15,7 @@ class SelectController extends Controller
         $search = $request->search;
 
         if($search == ''){
-           $groups = Group::orderby('AccountGroup','asc')->select('id','AccountGroup')->get();
+           $groups = Group::select('id','AccountGroup')->get();
         }
         else{
            $groups = Group::orderby('AccountGroup','asc')->select('id','AccountGroup')->where('AccountGroup', 'like', '%' .$search . '%')->get();
