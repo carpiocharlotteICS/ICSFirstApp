@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+// namespace App\Http\Controllers\Notifications\AccountCreated;
+
 use App\Models\Account;
 use App\Models\Group;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\AccountCreated;
 use Response;
+
 
 class AccountController extends Controller
 {
@@ -104,25 +110,11 @@ class AccountController extends Controller
             ]
         );
 
-        $data = array(
-            'recipient'=>'ccarpio@ics.com.ph',
-            'AccountName' => $request->_AccountName,
-            'AccountGroup' => $request->AccountGroup,
-            'AccountType' => $request->AccountType,
-            'DomainAccount' => $request->_DomainAccount,
-            'Email' => $request->_Email,
-            'NickName' => $request->_Nickname,
-        );
-
-
-        \Mail::send('email-template',$data, function($message) use ($data){
-            $message->to($data['recipient'])
-                    ->from($data['Email'],$data['AccountName'])
-                    ->subject("New CDB Account Created - " . $data['AccountName']);
-        });
-
+        $users = User::all();
+        //sending to multiple users
+        \Notification::route('mail', $users)->notify(new AccountCreated($accounts));
+        
         return response()->json([$accounts, 'success' => 'Account saved successfully']);
-       
     }
    
     /**
