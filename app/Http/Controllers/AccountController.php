@@ -110,11 +110,17 @@ class AccountController extends Controller
             ]
         );
 
-        $users = User::all();
-        //sending to multiple users
-        \Notification::route('mail', $users)->notify(new AccountCreated($accounts));
+        if($accounts->wasRecentlyCreated){
+            $users = User::all();
+            //sending to multiple users
+            \Notification::route('mail', $users)->notify(new AccountCreated($accounts));
+            return response()->json([$accounts, 'success' => 'Account saved successfully']);
+            
+         } else {
+            return response()->json([$accounts, 'success' => 'Account saved successfully']);
+         }
         
-        return response()->json([$accounts, 'success' => 'Account saved successfully']);
+        
     }
    
     /**
