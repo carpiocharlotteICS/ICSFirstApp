@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SelectController;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -36,3 +37,5 @@ Route::get("/addAccType", [AccountController::class, 'addAccType']);
 // Select2 Dropdown 
 Route::post("/getGroup", [SelectController::class, 'getGroup'])->name('getGroup');
 Route::post("/getType", [SelectController::class, 'getType'])->name('getType');
+// Get Purchase Order data
+Route::get("/orders", [OrderController::class, 'index']);
