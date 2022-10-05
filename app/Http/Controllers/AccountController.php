@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// namespace App\Http\Controllers\Notifications\AccountCreated;
-
 use App\Models\Account;
 use App\Models\Group;
 use App\Models\Type;

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -11,9 +13,26 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('inventory.orders');
+        $_orders = Order::latest()->get();
+
+        if ($request->ajax()) {
+            $data = Order::latest()->get();
+            return Datatables::of($data)
+                ->addColumn('action', function ($row) {
+
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->AccountID . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editOrder"><i class="fa fa-edit"></i></a>';
+                    $btn = $btn . '<a href="javascript:void(0)"  class="btn btn-danger btn-sm deleteAccount"><i class="fa fa-trash"></i></a>';
+
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->addIndexColumn()
+                ->make(true);
+        }
+
+        return view('inventory.orders', compact('_orders'));
     }
 
     /**
