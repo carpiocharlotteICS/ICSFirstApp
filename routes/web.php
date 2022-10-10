@@ -39,3 +39,4 @@ Route::post("/getGroup", [SelectController::class, 'getGroup'])->name('getGroup'
 Route::post("/getType", [SelectController::class, 'getType'])->name('getType');
 // Get Purchase Order data
 Route::get("/orders", [OrderController::class, 'index']);
+Route::post("/ajax_orders", [OrderController::class, 'store'])->name('orders');

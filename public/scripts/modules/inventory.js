@@ -8,9 +8,11 @@ $(function () {
     });
 });
 
-/* Create and Save Account */
+/* Create and Save Order */
 $("#createOrder").click(function () {
-    $("#OrderModal").html("Add Account");
+    $("#saveBtn").val("create-order");
+    $("#orderForm").trigger("reset");
+    $("#OrderModal").html("Create Purchase Order");
     $("#order-modal").modal("show");
 });
 
@@ -41,4 +43,29 @@ let orderTable = $(".data-table").DataTable({
 /* Fetch data on text fields when edit button is clicked */
 $("body").on("click", ".editOrder", function () {
     console.log("Edit Order");
+});
+
+/* Update and Save Order */
+$("#saveBtn").click(function (e) {
+    e.preventDefault();
+    console.log("Purchase Order Saved!");
+    $(this).html("Save");
+
+    $.ajax({
+        data: $("#orderForm").serialize(),
+        url: "/ajax_orders",
+        type: "POST",
+        processData: true,
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            $("#orderForm").trigger("reset");
+            $("#order-modal").modal("hide");
+            orderTable.draw();
+        },
+        error: function (data) {
+            console.log("Error:", data);
+            $("#saveBtn").html("Save Changes");
+        },
+    });
 });

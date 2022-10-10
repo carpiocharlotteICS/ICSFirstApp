@@ -53,7 +53,25 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $orders = Order::updateOrCreate(
+            [
+                'PONum' => $request->_PONum,
+                'Currency' => $request->_Currency,
+                'RequsitionItemID' => $request->_ItemID,
+                'PODateCreated' => $request->_DateCreated,
+                'Plant' => $request->_Plant,
+                'OPU' => $request->_OPU,
+                'VendorNo' => $request->_Email,
+                'ItemDesc' => $request->_ItemDesc,
+                'IMMaterial' => $request->_IMMaterial, 
+                'Qty' => $request->_ItemDesc,
+                'DeliveryDates' => $request->_DeliveryDate,
+                'NetPrice' => $request->_NetPrice
+            ]
+        );
+ 
+        return response()->json([$orders, 'success' => 'Order saved successfully']);
+         
     }
 
     /**
