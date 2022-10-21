@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
+use Response;
+use DB;
 
 class OrderController extends Controller
 {
@@ -53,25 +55,48 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $orders = Order::updateOrCreate(
-            [
-                'PONum' => $request->_PONum,
-                'Currency' => $request->_Currency,
-                'RequsitionItemID' => $request->_ItemID,
-                'PODateCreated' => $request->_DateCreated,
-                'Plant' => $request->_Plant,
-                'OPU' => $request->_OPU,
-                'VendorNo' => $request->_Email,
-                'ItemDesc' => $request->_ItemDesc,
-                'IMMaterial' => $request->_IMMaterial, 
-                'Qty' => $request->_ItemDesc,
-                'DeliveryDates' => $request->_DeliveryDate,
-                'NetPrice' => $request->_NetPrice
-            ]
-        );
- 
-        return response()->json([$orders, 'success' => 'Order saved successfully']);
-         
+        // Eloquent Method
+        // $orders = Order::updateOrCreate(
+        //     [
+        //         'PONum' => $request->_PONum,
+        //         'Currency' => $request->_Currency,
+        //         'RequsitionItemID' => $request->_ItemID,
+        //         'PODateCreated' => $request->_DateCreated,
+        //         'Plant' => $request->_Plant,
+        //         'opu' => $request->_OPU,
+        //
+        //         'ItemDesc' => $request->_ItemDesc,
+        //         'IMMaterial' => $request->_IMMaterial, 
+        //         'Qty' => $request->_Qty,
+        //         'DeliveryDates' => $request->_DeliveryDate,
+        //         'VendorNo' => $request->_VendorNo,
+        //         'NetPrice' => $request->_NetPrice
+        //     ]
+        // );
+
+        // Query Builder (Single insert)
+        // \DB::table('BackupSAP_LM2')->insert([
+        //     'PONum' => $request->input('_PONum'),
+        //     'Currency' => $request->input('_Currency'),
+        //     'RequsitionItemID' => $request->input('_ItemID'),
+        //     'PODateCreated' => $request->input('_DateCreated'),
+        //     'opu' => $request->input('_OPU'), 
+        //     'VendorNo' => $request->input('_VendorNo'),
+        //     'ItemDesc' => $request->input('_ItemDesc'), 
+        //     'IMMaterial' => $request->input('_IMMaterial'),
+        //     'Qty' => $request->input('_Qty'),
+        //     'DeliveryDates' => $request->input('_DeliveryDate'),
+        //     'VendorNo' => $request->input('_VendorNo'),
+        //     'NetPrice' => $request->input('_NetPrice')
+        // ]);
+        // return response()->json(
+        //     [
+        //         'success' => true,
+        //         'message' => 'Purchase Order inserted successfully'
+        //     ]
+        // );
+        
+
     }
 
     /**
@@ -91,10 +116,44 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($PONum)
     {
-        //
-    }
+        // $where = array('PONum' => $PONum);
+        // $order = Order::where($where)->first();
+
+        // return Response::json($order);
+
+
+        // \DB::table('BackupSAP_LM2')
+        //     ->where('PONum', $PONum)
+        //     ->update([
+        //         'PONum' => $request->input('_PONum'),
+        //         'Currency' => $request->input('_Currency'),
+        //         'RequsitionItemID' => $requst->input('_ItemID'),
+        //         'PODateCreated' => $request->input('_DateCreated'),
+        //         'opu' => $request->input('_Opu'),
+        //         'VendorNo' => $request->('_VendorNo')
+        //         'ItemDesc' => $request->
+        //         'IMMaterial' => $re
+        //         'Qty' => 
+        //         'DeliveryDates' => 
+        //         'VendorNo' =>
+        //         'NetPrice' => 
+        //     ]);
+
+        //     return response()->json(
+        //         [
+
+        //             'success' => true,
+        //             'message' => 'Purchase Order updated successfully'
+        //         ]
+        //     );
+
+
+
+
+
+        }
 
     /**
      * Update the specified resource in storage.

@@ -11,15 +11,15 @@
             </div>
             <div class="modal-body">
                 <form id="orderForm" name="orderForm" class="form-horizontal" method="POST">
-                    <input type="hidden" name="OrderID" id="OrderID">
+                    <input type="hidden" name="PONum" id="PONum">
                     <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 
                     <div class="row">
 
                         <div class="col-sm-6 col-md-4">
                             <label>PO Number</label>
-                            <input type="text" class="form-control" id="currency" name="_PONum"
-                                placeholder="Enter Currency">
+                            <input type="text" class="form-control" id="POnum" name="_PONum"
+                                placeholder="Enter PO Number">
                         </div>
             
 
@@ -27,14 +27,13 @@
                             <label>Currency</label>
                             <input type="text" class="form-control" id="currency" name="_Currency"
                                 placeholder="Enter Currency">
-                        </div>
-                    
-
+                        </div>  
+                        
                         <div class="col-sm-6 col-md-4">
-                            <label>Requisition Item ID</label>                
-                            <input type="text" class="form-control" id="ItemID" name="_ItemID"
-                                placeholder="Enter Requisition Item ID">                    
-                        </div>                        
+                            <label>PO Date Created</label>
+                            <input type="text" class="form-control" id="DateCreated" name="_DateCreated"
+                                placeholder="Enter PO Date Created">    
+                        </div>
 
                     </div>
 
@@ -42,12 +41,6 @@
 
                     <div class="row">
 
-                        <div class="col-sm-6 col-md-4">
-                            <label>PO Date Created</label>
-                            <input type="text" class="form-control" id="DateCreated" name="_DateCreated"
-                                placeholder="Enter PO Date Created">    
-                        </div>
-    
                         <div class="col-sm-6 col-md-4">
                             <label>Plant</label>                          
                             <input type="text" class="form-control" id="plant" name="_Plant"
@@ -58,20 +51,14 @@
                             <label>OPU</label>
                             <input type="text" class="form-control" id="opu" name="_OPU"
                                 placeholder="Enter OPU">
-                            
                         </div>
-                        
-                    </div>
 
-                    <br/>
-
-                    <div class="row">                      
                         <div class="col-sm-6 col-md-4">
                             <label>Vendor No</label>
                                 <input type="text" class="form-control" id="VendorNo" name="_VendorNo"
                                     placeholder="Enter Vendor Number">
                         </div>
-    
+                        
                     </div>
 
                     <br/>
@@ -82,22 +69,24 @@
                                 <table class="table table-hover table-white" id="tableEstimate">
                                     <thead>
                                         <tr>
+                                            <th style="width:80px;">Item ID</th>
                                             <th class="col-md-6">Item Desc</th>
                                             <th style="width:100px;">Material</th>
                                             <th style="width:80px;">PO Quantity</th>
                                             <th style="width:80px;">Delivery Date</th>
                                             <th>Netprice</th>
-                                            <th> </th>
+                                            <th> </th>                                            
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="item">
                                     <tr>
-                                        <td><input class="form-control"style="min-width:150px" type="text" id="description" name="_ItemDesc"></td>
-                                        <td><input class="form-control unit_price" style="width:100px" type="text" id="unit_cost" name="_IMMaterial"></td>
-                                        <td><input class="form-control qty" style="width:80px" type="text" id="qty" name="_Qty"></td>
-                                        <td><input class="form-control qty" style="width:80px" type="text" id="qty" name="_DeliveryDate"></td>
-                                        <td><input class="form-control total" style="width:120px" type="text" id="amount" name="_NetPrice"></td>
-                                        <td><a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn"><i class="fa fa-plus"></i></a></td>
+                                        <td><input type="text" class="form-control" style="width:80px" id="ItemID" name="item_id[]" placeholder="Item ID">  
+                                        <td><input type="text" class="form-control"style="min-width:150px" id="itemdesc" name="itemdesc[]" placeholder="Item Description"></td>
+                                        <td><input type="text" class="form-control unit_price" style="width:100px" id="material" name="material[]" placeholder="IM Material"></td>
+                                        <td><input type="text" class="form-control qty" style="width:80px" id="qty" name="qty[]" placeholder="Qty"></td>
+                                        <td><input type="text" class="form-control qty" style="width:80px" id="deldate" name="_DeliveryDate" placeholder="Delivery"></td>
+                                        <td><input type="text" class="form-control total" style="width:120px" id="netprice" name="_NetPrice" placeholder="NetPrice"></td>
+                                        <td><a href="javascript:void(0)" class="text-success font-18" title="Add" id="addRow"><i class="fa fa-plus"></i></a></td>
                                     </tr>
                                     </tbody>
                                 </table>

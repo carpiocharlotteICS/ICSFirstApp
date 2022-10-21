@@ -22,6 +22,7 @@
     <table class="table table-bordered table-hover dt-responsive display nowrap data-table" width="100%">
         <thead>
             <tr>
+                <th>PO Number</th>
                 <th>Currency</th>
                 <th>ItemDesc</th>
                 <th>IM Material</th>
